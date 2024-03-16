@@ -4,8 +4,8 @@
  * and open the template in the editor.
  */
 package Presentacion;
+import Negocio.cls_compras;
 import Negocio.cls_productos;
-import java.awt.Dimension;
 import java.util.LinkedList;
 import javax.swing.JOptionPane;
 
@@ -16,6 +16,7 @@ import javax.swing.JOptionPane;
 public class frm_inventario extends javax.swing.JFrame {
     
     LinkedList<cls_productos> productos = new LinkedList<>();
+    LinkedList<cls_compras> compras = new LinkedList<>();
    
     
     public frm_inventario() {
@@ -50,13 +51,28 @@ public class frm_inventario extends javax.swing.JFrame {
         btn_cancelar = new javax.swing.JButton();
         btn_consultar = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        txt_codigo1 = new javax.swing.JTextField();
+        txt_codigo_producto = new javax.swing.JTextField();
+        txt_contidad_producto = new javax.swing.JTextField();
+        txt_precio_producto = new javax.swing.JTextField();
+        btn_consultar_compra = new javax.swing.JButton();
+        btn_registrar_compra = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(102, 0, 0));
+        jTabbedPane1.setBackground(new java.awt.Color(0, 0, 0));
+        jTabbedPane1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        jTabbedPane1.setTabLayoutPolicy(javax.swing.JTabbedPane.SCROLL_TAB_LAYOUT);
+        jTabbedPane1.setTabPlacement(javax.swing.JTabbedPane.LEFT);
+
+        jPanel1.setBackground(new java.awt.Color(188, 11, 39));
         jPanel1.setBorder(new javax.swing.border.SoftBevelBorder(0));
         jPanel1.setForeground(new java.awt.Color(153, 0, 153));
 
@@ -127,7 +143,7 @@ public class frm_inventario extends javax.swing.JFrame {
         btn_consultar.setForeground(new java.awt.Color(255, 255, 255));
         btn_consultar.setText("Consultar");
         btn_consultar.setToolTipText("Consultar");
-        btn_consultar.setBorder(null);
+        btn_consultar.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         btn_consultar.setBorderPainted(false);
         btn_consultar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -150,7 +166,7 @@ public class frm_inventario extends javax.swing.JFrame {
                             .addComponent(jLabel4))
                         .addGap(27, 27, 27)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txt_codigo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 303, Short.MAX_VALUE)
+                            .addComponent(txt_codigo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 237, Short.MAX_VALUE)
                             .addComponent(txt_precio)
                             .addComponent(txt_cantidad)))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
@@ -190,45 +206,160 @@ public class frm_inventario extends javax.swing.JFrame {
                     .addComponent(btn_cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_guardar, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_consultar, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(17, Short.MAX_VALUE))
+                .addContainerGap(38, Short.MAX_VALUE))
         );
 
         txt_codigo.getAccessibleContext().setAccessibleName("Ingrese codigo");
 
         jTabbedPane1.addTab("Productos", jPanel1);
 
-        jPanel2.setBackground(new java.awt.Color(102, 102, 0));
+        jPanel2.setBackground(new java.awt.Color(241, 174, 43));
+
+        jLabel6.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 18)); // NOI18N
+        jLabel6.setText("Codigo:");
+
+        jLabel7.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 18)); // NOI18N
+        jLabel7.setText("Nombre:");
+
+        jLabel8.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 18)); // NOI18N
+        jLabel8.setText("Precio:");
+
+        jLabel9.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 18)); // NOI18N
+        jLabel9.setText("Cantidad:");
+
+        txt_codigo1.setEditable(false);
+        txt_codigo1.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        txt_codigo1.setToolTipText("Ingrese el codigo");
+        txt_codigo1.setBorder(new javax.swing.border.SoftBevelBorder(0));
+        txt_codigo1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_codigo1ActionPerformed(evt);
+            }
+        });
+
+        txt_codigo_producto.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        txt_codigo_producto.setToolTipText("Ingrese el codigo");
+        txt_codigo_producto.setBorder(new javax.swing.border.SoftBevelBorder(0));
+        txt_codigo_producto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_codigo_productoActionPerformed(evt);
+            }
+        });
+
+        txt_contidad_producto.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        txt_contidad_producto.setToolTipText("Ingrese el codigo");
+        txt_contidad_producto.setBorder(new javax.swing.border.SoftBevelBorder(0));
+        txt_contidad_producto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_contidad_productoActionPerformed(evt);
+            }
+        });
+
+        txt_precio_producto.setEditable(false);
+        txt_precio_producto.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        txt_precio_producto.setToolTipText("Ingrese el codigo");
+        txt_precio_producto.setBorder(new javax.swing.border.SoftBevelBorder(0));
+        txt_precio_producto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_precio_productoActionPerformed(evt);
+            }
+        });
+
+        btn_consultar_compra.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 14)); // NOI18N
+        btn_consultar_compra.setText("Consultar");
+        btn_consultar_compra.setBorder(javax.swing.BorderFactory.createEmptyBorder(4, 4, 4, 4));
+        btn_consultar_compra.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_consultar_compraActionPerformed(evt);
+            }
+        });
+
+        btn_registrar_compra.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 14)); // NOI18N
+        btn_registrar_compra.setText("Registrar comprar");
+        btn_registrar_compra.setBorder(javax.swing.BorderFactory.createEmptyBorder(4, 5, 4, 5));
+        btn_registrar_compra.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_registrar_compraActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 596, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(0, 147, Short.MAX_VALUE)
+                        .addComponent(btn_consultar_compra)
+                        .addGap(18, 18, 18)
+                        .addComponent(btn_registrar_compra))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(45, 45, 45)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel6)
+                                    .addComponent(jLabel7)
+                                    .addComponent(jLabel8))
+                                .addGap(15, 15, 15))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(jLabel9)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txt_codigo_producto)
+                            .addComponent(txt_codigo1)
+                            .addComponent(txt_precio_producto)
+                            .addComponent(txt_contidad_producto))))
+                .addGap(177, 177, 177))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 280, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(31, 31, 31)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6)
+                    .addComponent(txt_codigo_producto, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(12, 12, 12)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel7)
+                    .addComponent(txt_codigo1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel8)
+                    .addComponent(txt_precio_producto, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel9)
+                    .addComponent(txt_contidad_producto, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btn_registrar_compra)
+                    .addComponent(btn_consultar_compra))
+                .addContainerGap(67, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Compras", jPanel2);
 
-        jPanel3.setBackground(new java.awt.Color(0, 153, 153));
+        jPanel3.setBackground(new java.awt.Color(244, 221, 180));
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 596, Short.MAX_VALUE)
+            .addGap(0, 530, Short.MAX_VALUE)
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 280, Short.MAX_VALUE)
+            .addGap(0, 301, Short.MAX_VALUE)
         );
 
         jTabbedPane1.addTab("Ventas", jPanel3);
 
-        jPanel4.setBackground(new java.awt.Color(0, 0, 0));
+        jPanel4.setBackground(new java.awt.Color(74, 37, 18));
 
+        jLabel1.setBackground(new java.awt.Color(114, 188, 165));
         jLabel1.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("INVENTARIO DE LA COMPAÑIA SAVAGE");
@@ -254,7 +385,7 @@ public class frm_inventario extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1)
+            .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 601, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -282,21 +413,26 @@ public class frm_inventario extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_codigoActionPerformed
     
-    private void fnt_guardarproducto(String codigoStr, String nombreStr, float precioFlt){
-        productos.add(new cls_productos(codigoStr, nombreStr, precioFlt));
-        JOptionPane.showMessageDialog(null,"Registrado correctamente", "Registro", JOptionPane.PLAIN_MESSAGE);
-        
+private void fnt_guardarproducto(String codigoStr, String nombreStr, String precioStr){
+    if (codigoStr.isEmpty() || nombreStr.isEmpty() || precioStr.isEmpty()) {
+        JOptionPane.showMessageDialog(null, "Todos los campos son obligatorios", "Error", JOptionPane.ERROR_MESSAGE);
+    }else{
+    
+    productos.add(new cls_productos(codigoStr, nombreStr, Float.parseFloat(precioStr)));
+    JOptionPane.showMessageDialog(null, "Registrado correctamente", "Registro", JOptionPane.PLAIN_MESSAGE);
     }
+    
+}
     
     private void btn_guardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_guardarActionPerformed
         fnt_guardarproducto(
           txt_codigo.getText(), 
           txt_nombre.getText(),
-          Float.parseFloat(txt_precio.getText())
+          txt_precio.getText()
         );
     }//GEN-LAST:event_btn_guardarActionPerformed
 
-    private void fnt_consultarProducto(String codigo){
+    private void fnt_consultarProducto(String codigo, int boton){
         boolean swBln = false;
         int posicionInt = 0;
         
@@ -311,16 +447,57 @@ public class frm_inventario extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "Introduce un codigo valido",
                 "ERROR", JOptionPane.WARNING_MESSAGE);
             }else{
-                txt_cantidad.setText("" + productos.get(posicionInt).getCantidadInt());
-                txt_nombre.setText("" + productos.get(posicionInt).getNombreStr());
-                txt_precio.setText("" + productos.get(posicionInt).getPrecioFlt());
+                if(boton == 1){
+                    txt_cantidad.setText("" + productos.get(posicionInt).getCantidadInt());
+                    txt_nombre.setText("" + productos.get(posicionInt).getNombreStr());
+                    txt_precio.setText("" + productos.get(posicionInt).getPrecioFlt());
+                }
+                
+                if(boton == 2){
+                
+                    txt_codigo1.setText("" + productos.get(posicionInt).getNombreStr());
+                    txt_precio_producto.setText("" + productos.get(posicionInt).getPrecioFlt());
+                }
+
             }
         }
     
     
     private void btn_consultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_consultarActionPerformed
-     fnt_consultarProducto(txt_codigo.getText());
+     fnt_consultarProducto(txt_codigo.getText(),1);
     }//GEN-LAST:event_btn_consultarActionPerformed
+
+    private void txt_codigo1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_codigo1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_codigo1ActionPerformed
+
+    private void txt_codigo_productoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_codigo_productoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_codigo_productoActionPerformed
+
+    private void txt_contidad_productoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_contidad_productoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_contidad_productoActionPerformed
+
+    private void txt_precio_productoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_precio_productoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_precio_productoActionPerformed
+
+    private void btn_consultar_compraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_consultar_compraActionPerformed
+        fnt_consultarProducto(txt_codigo_producto.getText(),2);
+    }//GEN-LAST:event_btn_consultar_compraActionPerformed
+
+    private void btn_registrar_compraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_registrar_compraActionPerformed
+      
+        if(txt_contidad_producto.getText().isEmpty()){
+            JOptionPane.showMessageDialog(null, "Faltan parametros por llenar","ERROR",JOptionPane.ERROR_MESSAGE);
+        }else{
+           compras.add(new cls_compras(txt_codigo_producto.getText(), 
+           Integer.parseInt(txt_contidad_producto.getText()), 
+           Float.parseFloat(txt_precio_producto.getText())));
+           JOptionPane.showMessageDialog(null, "Comprar registrada con exito", "COMPRA",JOptionPane.PLAIN_MESSAGE);
+        }
+    }//GEN-LAST:event_btn_registrar_compraActionPerformed
 
     /**
      * @param args the command line arguments
@@ -360,12 +537,18 @@ public class frm_inventario extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_cancelar;
     private javax.swing.JButton btn_consultar;
+    private javax.swing.JButton btn_consultar_compra;
     private javax.swing.JButton btn_guardar;
+    private javax.swing.JButton btn_registrar_compra;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -373,7 +556,11 @@ public class frm_inventario extends javax.swing.JFrame {
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTextField txt_cantidad;
     private javax.swing.JTextField txt_codigo;
+    private javax.swing.JTextField txt_codigo1;
+    private javax.swing.JTextField txt_codigo_producto;
+    private javax.swing.JTextField txt_contidad_producto;
     private javax.swing.JTextField txt_nombre;
     private javax.swing.JTextField txt_precio;
+    private javax.swing.JTextField txt_precio_producto;
     // End of variables declaration//GEN-END:variables
 }
